@@ -1,0 +1,93 @@
+
+<script type="text/x-red" data-template-name="webhookrelay">    
+     <h3>Subscription buckets</h3>
+     <p>
+        Buckets allow you to group and differentiate your incoming HTTP traffic.<br/> 
+        One or more, comma separated buckets to subscribe to. You can view <br/> 
+        existing buckets or create new ones on the <a href="https://my.webhookrelay.com/buckets" rel="noopener" target="_blank">buckets page</a>.
+     </p>
+     <br/>
+     <div class="form-row">
+         <label for="node-input-buckets"><i class="fa fa-tag"></i> Buckets</label>
+         <input type="text" id="node-input-buckets" placeholder="nodered">
+     </div>
+    
+     <br/>
+     <h3>Authentication</h3>
+     <p>
+        Token key and secret can be retrieved from 
+        <a href="https://my.webhookrelay.com/tokens" rel="noopener" target="_blank">https://my.webhookrelay.com/tokens</a>.        
+     </p>
+
+     <br/>
+
+     <div class="form-row">
+         <label for="node-input-key"><i class="fa fa-key"></i> Key</label>
+         <input type="text" id="node-input-key">
+     </div>
+     <div class="form-row">
+         <label for="node-input-secret"><i class="fa fa-key"></i> Secret</label>
+         <input type="password" id="node-input-secret">
+     </div>
+ </script>
+ 
+ 
+ <!-- Next, some simple help text is provided for the node.                   -->
+ <script type="text/x-red" data-help-name="webhookrelay">
+    <!-- data-help-name identifies the node type this help is for             -->
+    <!-- This content appears in the Info sidebar when a node is selected     -->
+    <!-- The first <p> is used as the pop-up tool tip when hovering over a    -->
+    <!-- node in the palette.                                                 -->
+    <p>Webhook Relay node allows Node-RED to receive webhooks or any other HTTP
+       requests without having a public IP or configuring NAT/firewall. Register
+       on <a href="https://my.webhookrelay.com" rel="noopener" target="_blank">Webhook Relay</a>
+       website to get your public input endpoints.
+    </p>
+    <p>Once connected, you will be able to receive full HTTP request information, such as URL called,
+       headers, body, query, method, as well as additional Webhook Relay metadata such as bucket name,
+       ID, configured output destination.
+    </p>
+ </script>
+ 
+ <!-- Finally, the node type is registered along with all of its properties   -->
+ <!-- The example below shows a small subset of the properties that can be set-->
+ <script type="text/javascript">
+     RED.nodes.registerType('webhookrelay',{
+         category: 'input',      // the palette category
+         defaults: {             // defines the editable properties of the node
+             buckets: {value:""},   //  along with default values.             
+         },    
+        //  credentials: {
+        //     key: {type:"text"},
+        //     secret: {type: "password"}
+        //  },
+         credentials: {           
+            key: {type: "password"},
+            secret: {type:"password"}
+         },
+         oneditsave: function() {
+            // var trimFields = [
+            //     "key",
+            //     "secret"
+            // ];
+            // // Just in case any whitespace has crept in with the copy-paste of the fields
+            // trimFields.forEach(function(field) {
+            //     var v = $("#node-config-input-"+field).val();
+            //     v = v.trim();
+            //     $("#node-config-input-"+field).val(v);
+            // });
+         },
+         inputs:0,               // set the number of inputs - only 0 or 1
+         outputs:1,              // set the number of outputs - 0 to n
+         color: "#64B5F6",          // set icon color
+         // set the icon (held in icons dir below where you save the node)
+         icon: "white-globe.png",     // saved in  icons/myicon.png
+         label: function() {     // sets the default label contents
+             return this.name||this.topic||"webhookrelay";
+         },
+         labelStyle: function() { // sets the class to apply to the label
+             return this.name?"node_label_italic":"";
+         }
+     });
+ </script>
+ 

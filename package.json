@@ -1,0 +1,32 @@
+{
+  "name": "node-red-contrib-webhookrelay",
+  "version": "0.1.0",
+  "description": "Process webhooks without public IP or configuring NAT/firewall",
+  "main": "webhookrelay/webhookrelay.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webhookrelay/node-red-contrib-webhookrelay.git"
+  },
+  "keywords": [
+    "websockets",
+    "webhookrelay",
+    "webhook"
+  ],
+  "author": "Karolis Rusenas",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/webhookrelay/node-red-contrib-webhookrelay/issues"
+  },
+  "node-red": {
+    "nodes": {
+      "webhookrelay": "webhookrelay.js"
+    }
+  },
+  "homepage": "https://github.com/webhookrelay/node-red-contrib-webhookrelay#readme",
+  "dependencies": {
+    "webhookrelay-ws-client": "file:../webhookrelay-ws-client"
+  }
+}
