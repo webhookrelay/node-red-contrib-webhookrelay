@@ -13,7 +13,8 @@
   "keywords": [
     "websockets",
     "webhookrelay",
-    "webhook"
+    "webhook",
+    "node-red"
   ],
   "author": "Karolis Rusenas",
   "license": "Apache-2.0",
@@ -27,6 +28,6 @@
   },
   "homepage": "https://github.com/webhookrelay/node-red-contrib-webhookrelay#readme",
   "dependencies": {
-    "webhookrelay-ws-client": "file:../webhookrelay-ws-client"
+    "webhookrelay-ws-client": "^0.3.0"
   }
 }
