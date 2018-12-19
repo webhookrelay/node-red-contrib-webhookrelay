@@ -83,6 +83,7 @@ module.exports = function (RED) {
         if (this.key && this.secret) {
             var client = new ws.WebhookRelayClient(node.key, node.secret, node.bucketsFilter, handler);
             client.connect();
+            node.whrClient = client;
         }
 
         this.on('input', function (msg) {
@@ -91,6 +92,9 @@ module.exports = function (RED) {
 
         this.on("close", function () {
             // TODO: disconnect ws-client
+            if (node.whrClient) {
+                node.whrClient.disconnect();
+            }
         });
     }
 

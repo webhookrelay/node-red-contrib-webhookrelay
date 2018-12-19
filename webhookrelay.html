@@ -1,5 +1,4 @@
-
-<script type="text/x-red" data-template-name="webhookrelay">    
+<script type="text/x-red" data-template-name="webhookrelay">
      <h3>Subscription buckets</h3>
      <p>
         Buckets allow you to group and differentiate your incoming HTTP traffic.<br/> 
@@ -30,10 +29,10 @@
          <input type="password" id="node-input-secret">
      </div>
  </script>
- 
- 
- <!-- Next, some simple help text is provided for the node.                   -->
- <script type="text/x-red" data-help-name="webhookrelay">
+
+
+<!-- Next, some simple help text is provided for the node.                   -->
+<script type="text/x-red" data-help-name="webhookrelay">
     <!-- data-help-name identifies the node type this help is for             -->
     <!-- This content appears in the Info sidebar when a node is selected     -->
     <!-- The first <p> is used as the pop-up tool tip when hovering over a    -->
@@ -48,46 +47,40 @@
        ID, configured output destination.
     </p>
  </script>
- 
- <!-- Finally, the node type is registered along with all of its properties   -->
- <!-- The example below shows a small subset of the properties that can be set-->
- <script type="text/javascript">
-     RED.nodes.registerType('webhookrelay',{
-         category: 'input',      // the palette category
-         defaults: {             // defines the editable properties of the node
-             buckets: {value:""},   //  along with default values.             
-         },    
-        //  credentials: {
-        //     key: {type:"text"},
-        //     secret: {type: "password"}
-        //  },
-         credentials: {           
-            key: {type: "password"},
-            secret: {type:"password"}
-         },
-         oneditsave: function() {
-            // var trimFields = [
-            //     "key",
-            //     "secret"
-            // ];
-            // // Just in case any whitespace has crept in with the copy-paste of the fields
-            // trimFields.forEach(function(field) {
-            //     var v = $("#node-config-input-"+field).val();
-            //     v = v.trim();
-            //     $("#node-config-input-"+field).val(v);
-            // });
-         },
-         inputs:0,               // set the number of inputs - only 0 or 1
-         outputs:1,              // set the number of outputs - 0 to n
-         color: "#64B5F6",          // set icon color
-         // set the icon (held in icons dir below where you save the node)
-         icon: "white-globe.png",     // saved in  icons/myicon.png
-         label: function() {     // sets the default label contents
-             return this.name||this.topic||"webhookrelay";
-         },
-         labelStyle: function() { // sets the class to apply to the label
-             return this.name?"node_label_italic":"";
-         }
-     });
- </script>
- 
+
+<!-- Finally, the node type is registered along with all of its properties   -->
+<!-- The example below shows a small subset of the properties that can be set-->
+<script type="text/javascript">
+    RED.nodes.registerType('webhookrelay', {
+        category: 'input',      // the palette category
+        defaults: {             // defines the editable properties of the node
+            buckets: { value: "" },   //  along with default values.             
+        },
+        credentials: {
+            key: { type: "password" },
+            secret: { type: "password" }
+        },
+        oneditsave: function () {
+            var trimFields = [
+                "key",
+                "secret"
+            ];
+            // Just in case any whitespace has crept in with the copy-paste of the fields
+            trimFields.forEach(function (field) {
+                var v = $("#node-config-input-" + field).val();
+                v = v.trim();
+                $("#node-config-input-" + field).val(v);
+            });
+        },
+        inputs: 0,
+        outputs: 1,
+        color: "#C0DEED",
+        icon: "webhookrelay.png",
+        label: function () {     // sets the default label contents
+            return this.name || this.topic || "webhookrelay";
+        },
+        labelStyle: function () { // sets the class to apply to the label
+            return this.name ? "node_label_italic" : "";
+        }
+    });
+</script>
