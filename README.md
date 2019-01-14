@@ -1,16 +1,23 @@
 <p align="center">
-    <a href="https://webhookrelay.com" target="_blank"><img width="100"src="https://webhookrelay.com/images/sat_logo.png"></a>
+    <a href="https://webhookrelay.com" rel="noopener" target="_blank"><img width="100"src="https://webhookrelay.com/images/sat_logo.png"></a>
 </p>
 
-## Problem
+## Webhook Relay
 
-Node-RED is great at receiving and processing various kinds of events but is not considered safe to be exposed to the internet (more info [here](https://github.com/node-red/cookbook.nodered.org/wiki/How-to-safely-expose-Node-RED-to-the-Internet)). Also, to expose Node-RED to the internet, you will need to either deploy it on a public cloud instance or configure your router NAT/firewall.  
+`node-red-contrib-webhookrelay` package provides an easy way to receive webhooks without exposing whole Node-RED instance to the internet. Webhooks are received through public cloud endpoint and then are streamed over secure connections to your Node-RED.
 
-<!-- Ubiquitous HTTP protocol allows any application to talk to any other application over the network. However, sometimes applications are behind firewalls, routers that don't do NAT, or just don't have an HTTP server at all. In this case applications would have to do HTTP polling that is slower and more resource intensive task. -->
+## What problem does it solve?
 
-## Solution
+Node-RED is great at receiving and processing various kinds of events but is not considered safe to be exposed to the internet (more info [here](https://github.com/node-red/cookbook.nodered.org/wiki/How-to-safely-expose-Node-RED-to-the-Internet)). Also, to expose Node-RED to the internet, you will need to either deploy it on a public cloud instance or configure your router NAT/firewall.
 
-`node-red-contrib-webhookrelay` package provides an easy way to receive webhooks without exposing whole Node-RED instance to the internet. 
+## Example use case
+
+Here's an example of how to receive and process webhooks on your private Node-RED server (than can be running on your laptop) from a remote device such as a smartphone. Other services such as IFTTT, Zapier or Google Home are great examples of useful integrations. You can get all the webhook details from the node:
+
+<p align="center">
+    <a href="https://webhookrelay.com/blog/2019/01/09/nodered-owntracks-direct/" rel="noopener" target="_blank"><img width="550" src="https://webhookrelay.com/images/blog/nodered-owntracks/geo-flow.png"></a>
+</p>
+
 
 ## How it works
 
@@ -85,6 +92,6 @@ Or exposing whole Node-RED to the internet:
 relay connect http://127.0.0.1:1880
 ```
 
-## Pricing
+## Pricing - Free + paid options
 
 Webhook Relay has a free tier that can be enough for a lot of integration (CI/CD) but consider subscribing to a paid plan to support the project. Pricing can be found here: https://webhookrelay.com/pricing/. 
