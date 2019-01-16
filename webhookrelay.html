@@ -67,9 +67,11 @@
             ];
             // Just in case any whitespace has crept in with the copy-paste of the fields
             trimFields.forEach(function (field) {
-                var v = $("#node-config-input-" + field).val();
-                v = v.trim();
-                $("#node-config-input-" + field).val(v);
+                var v = $("#node-input-" + field).val();
+                if (v) {
+                    v = v.trim();
+                    $("#node-input-" + field).val(v);
+                }               
             });
         },
         inputs: 0,
