@@ -1,0 +1,31 @@
+kind: pipeline
+name: default
+
+steps:
+
+- name: build
+  image: node:latest
+  commands:
+    - npm install
+
+- name: publish
+  image: node:latest
+  environment:
+    NPM_TOKEN:
+      from_secret: npm_token
+  commands:
+    - make drone-publish
+  when:
+    event: [ tag ]
+
+
+- name: slack
+  image: plugins/slack
+  when:
+    status: [ success, failure ]
+  settings:
+    webhook:
+      from_secret: slack_url
+    channel: general
+    username: drone
+    icon_url: https://i.pinimg.com/originals/51/29/a4/5129a48ddad9e8408d2757dd10eb836f.jpg
