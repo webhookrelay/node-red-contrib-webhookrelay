@@ -87,7 +87,9 @@ module.exports = function (RED) {
         }
 
         this.on('input', function (msg) {
-            // Nothing to do
+            node.log(`responding to webhook event: '${msg.meta.id}', status: '${msg.status}'`)
+            var client = new ws.WebhookRelayClient(node.key, node.secret);
+            client.respond(msg)    
         });
 
         this.on("close", function () {
