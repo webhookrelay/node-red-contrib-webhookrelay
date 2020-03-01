@@ -58,6 +58,7 @@ Example JSON object output from the node:
 	"payload": {
 		"type": "webhook",
 		"meta": {
+			"id": "xxxxx-xxxx-xxxx-ab1d-89a8b0505693",
 			"bucked_id": "12302faf-43bd-43c4-ab1d-89a8b0505693",
 			"bucket_name": "nodered",
 			"input_id": "544a6fe8-83fe-4361-a264-0fd486e1665d",
@@ -79,6 +80,30 @@ Example JSON object output from the node:
 	"_msgid": "43de3dbf.04f4c4"
 }
 ```
+
+### Sending responses back to the caller
+
+First, ensure that your bucket's input is configured to return responses (by default for security reasons it will always return 200 status code and an empty body):
+
+1. Go to your buckets page https://my.webhookrelay.com/buckets
+2. Go to the bucket details
+3. Click on input's settings
+4. From the dropdown select "Any output"
+
+Now, to send back responses from the Node-RED back to Webhook Relay so it can respond to the caller, form a payload:
+
+```javascript
+return {
+    meta: msg.payload.meta,  // this is original meta field from the payload (it's important to include it so we have the message ID)
+    status: 200,   // status code to return (200, 201, 400, etc)
+		body: "any payload here (if you want to send JSON, just stringify it first)" // body
+		headers: {
+			someheader: ['somevalue']
+		} 
+};
+```
+
+Then, send this payload back to the Webhook Relay node through its input.
 
 ## Alternative methods
 
