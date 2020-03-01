@@ -96,7 +96,7 @@ Now, to send back responses from the Node-RED back to Webhook Relay so it can re
 return {
     meta: msg.payload.meta,  // this is original meta field from the payload (it's important to include it so we have the message ID)
     status: 200,   // status code to return (200, 201, 400, etc)
-		body: "any payload here (if you want to send JSON, just stringify it first)" // body
+		body: "any payload here (if you want to send JSON, just stringify it first)", // body
 		headers: {
 			someheader: ['somevalue']
 		} 
