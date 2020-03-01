@@ -44,7 +44,9 @@
     </p>
     <p>Once connected, you will be able to receive full HTTP request information, such as URL called,
        headers, body, query, method, as well as additional Webhook Relay metadata such as bucket name,
-       ID, configured output destination.
+       ID, configured output destination. Optionally, you can enable responses on the Webhook Relay service
+       and send back status code, headers and response body through this node that will be send back to 
+       the caller.
     </p>
  </script>
 
@@ -74,7 +76,7 @@
                 }               
             });
         },
-        inputs: 0,
+        inputs: 1,
         outputs: 1,
         color: "#C0DEED",
         icon: "webhookrelay.png",
