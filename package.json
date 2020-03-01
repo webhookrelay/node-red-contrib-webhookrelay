@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-webhookrelay",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "General purpose webhook tunnel-based receiver. Process 3rd party webhooks without public IP or configuring NAT/firewall",
   "main": "webhookrelay/webhookrelay.js",
   "scripts": {
@@ -28,6 +28,6 @@
   },
   "homepage": "https://github.com/webhookrelay/node-red-contrib-webhookrelay#readme",
   "dependencies": {
-    "webhookrelay-ws-client": "^0.6.1"
+    "webhookrelay-ws-client": "^0.7.1"
   }
 }
